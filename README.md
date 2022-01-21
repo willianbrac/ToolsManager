@@ -33,7 +33,7 @@
 - Você pode utilizar uma ferramenta como o Postman ou Insomnia para fazer as requisições HTTP
 
 ## Rotas da API
-## 1) (POST) http://localhost:3000/tools
+## 1) [POST] `http://localhost:3000/tools`
 
 Nessa rota você conseguira realizar o cadastro de uma ferramenta passando no corpo da requisição o objeto no formato JSON. Caso o cadastro seja bem sucedido será retornado um status 201 e o objeto cadastrado. Do contrário será retornado um status 500 caso não atenda as informações passadas ou um status 400 caso title da ferramenta já exista
 
@@ -46,18 +46,21 @@ Nessa rota você conseguira realizar o cadastro de uma ferramenta passando no co
 }
 ```
 
-## 2) (GET) http://localhost:3000/tools
+## 2) [GET] `http://localhost:3000/tools`
 
 Nessa rota você conseguira buscar todas a ferramentas cadastradas. Ela retorna um array de objetos no formato JSON de acordo com o que você cadastrou e um status 200 *OK*
 
-## 3) (DELETE) http://localhost:3000/tool/:id
+## 3) [DELETE] `http://localhost:3000/tool/:id`
 
 Nessa rota você conseguira deletar uma ferramenta pelo ID passado nos parâmetro da rota. Para possibilitar uma identificação única para cada objeto foi utilizado UUID. Então o ID passado deve ser um UUID existente na base de dados. Será realizado uma busca pelo ID passado, caso ele encontre o objeto será deletado e retornará um status 200 e a mensagem "*Deleted!*". Caso a ferramenta não seja encontrada será retornado um status 400 e a mensagem de erro "*Tool does't exists!*"
-`(/tool/f958b905-5405-4d6d-ada7-0e8710bd9713) por exemplo`
 
-## 4) (GET) http://localhost:3000/tools/:tag
+`(http://localhost:3000/tool/f958b905-5405-4d6d-ada7-0e8710bd9713) por exemplo`
+
+## 4) [GET] `http://localhost:3000/tools/:tag`
 
 Nessa rota você pode buscar por uma tag na base de dados dentro do atributo "tags" do(s) objeto(s) se ele conter dentro do array uma tag com o nome que foi passado nos parâmetros da rota. Caso encontre será retornado o(s) objeto(s) correspondente(s) e o status 200 do contrário retornará uma mensagem de erro "*Tag does't exist in tool list!*"`
-`(/tools/node) por exemplo`
 
-*Feito por Willian Brandão Mendonça*
+`(http://localhost:3000/tools/node) por exemplo`
+
+
+**Feito por Willian Brandão Mendonça**
