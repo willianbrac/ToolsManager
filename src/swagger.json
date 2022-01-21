@@ -1,0 +1,170 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Tools Manager Documentation",
+        "description": "This is an API Tools",
+        "version": "1.0.0",
+        "contact": {
+            "email": "willian.br.ac68@gmail.com"
+        }
+    },
+    "paths": {
+        "/tools": {
+            "post": {
+                "tags": ["Tool"],
+                "summary": "Criar uma nova ferramenta",
+                "description": "Cria uma nova ferramenta",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "link": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "tags": {
+                                        "type": "array"
+                                    }
+                                },
+                                "example": {
+                                    "title": "hotel",
+                                    "link": "https://github.com/typicode/hotel",
+                                    "description": "Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.",
+                                    "tags":["node", "organizing", "webapps", "domain", "developer", "https", "proxy"]
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "Error"
+                    }
+                }
+            },        
+            "get": {
+                "tags": ["Tools"],
+                "summary": "Listar todas as ferramentas",
+                "description": "Lista todas as ferramentas cadastradas",
+                "responses":{
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "aplication/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "itens": {
+                                        "type": "object",
+                                        "properties": {"properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "tags": {
+                                                "type": "array"
+                                            }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }  
+        },
+        "/tool/{id}": {
+            "delete": {
+                "tags": ["Tool"],
+                "summary": "Deletar uma ferramenta pelo ID",
+                "description": "Deletar uma ferramenta pelo ID passado nos parametros",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "tool id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200": {
+                        "description": "Ok"
+                    },
+                    "500": {
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/tools/{tag}": {
+            "get": {
+                "tags": ["Tools"],
+                "summary": "Buscar por Tag nas ferramentas cadastradas",
+                "description": "Busca pela tag passada nos parametros",
+                "parameters": [
+                    {
+                        "name": "tag",
+                        "in": "path",
+                        "description": "tool tag",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200": {
+                        "description": "Success!",
+                        "content": {
+                            "aplication/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "itens": {
+                                        "type": "object",
+                                        "properties": {"properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "tags": {
+                                                "type": "array"
+                                            }
+                                        }}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+    }
+} 
+    
+
+
+
+
